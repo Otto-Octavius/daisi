@@ -72,21 +72,19 @@ def enhance(i):
 
 
 if __name__ == '__main__':
-    st.title("Image Enhancement during Low Light Conditions")
+    st.title("Image Enhancement Low Light Conditions",page_icon=":flashlight:", layout="wide")
     user_image = st.sidebar.file_uploader("Load your own image")
     if user_image is not None:
         i = Image.open(user_image)
     else:
         i = Image.open('547.png')
-    w, h = i.size
-    if h>720:    
-        width_size = int((float(i.size[0]) * float(720 / float(i.size[1]))))
-        i = i.resize((width_size, 720), PIL.Image.NEAREST)
+
+    st.header("Original image")
+    st.image(i)
+
     draw_landmark_button = st.button('Bring out Details')
+
     if draw_landmark_button:
         result = enhance(i)
         st.header("Enhanced Image")
         st.image(result)
-    else:
-        st.header("Original Image")
-        st.image(i)
