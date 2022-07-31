@@ -72,7 +72,7 @@ def enhance(i):
 
 
 if __name__ == '__main__':
-    st.title("Image Enhancement Low Light Conditions :flashlight:")
+    st.title("Image Enhancement in Low Light Conditions :flashlight:")
     user_image = st.sidebar.file_uploader("Load your own image")
     if user_image is not None:
         i = Image.open(user_image)
@@ -81,13 +81,10 @@ if __name__ == '__main__':
 
     st.header("Original image")
     st.image(i)
+    result = enhance(i)
 
     draw_landmark_button = st.button('Bring out Details')
 
     if draw_landmark_button:
-        result = enhance(i)
         st.header("Enhanced Image")
         st.image(result)
-
-
-
