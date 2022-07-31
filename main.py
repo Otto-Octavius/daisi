@@ -59,7 +59,7 @@ def get_model():
 
 def enhance(i):
     model = get_model()
-    model.load_weights("./OptimumW.h5")
+    model.load_weights("OptimumW.h5")
     image = keras.preprocessing.image.img_to_array(i)
     image = image[:, :, :3] if image.shape[-1] > 3 else image
     image = image.astype("float32") / 255.0
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     if user_image is not None:
         i = Image.open(user_image)
     else:
-        i = Image.open('./547.png')
+        i = Image.open('547.png')
 
     draw_landmark_button = st.button('Bring out Details')
 
