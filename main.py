@@ -72,7 +72,7 @@ def enhance(i):
 
 
 if __name__ == '__main__':
-    st.set_page_config(page_title="Image Enhancement Low Light Conditions",page_icon=":flashlight:", layout="wide")
+    st.title("Image Enhancement Low Light Conditions :flashlight:")
     user_image = st.sidebar.file_uploader("Load your own image")
     if user_image is not None:
         i = Image.open(user_image)
