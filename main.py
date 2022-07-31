@@ -82,8 +82,7 @@ if __name__ == '__main__':
     if h>720:    
         width_size = int((float(i.size[0]) * float(720 / float(i.size[1]))))
         i = i.resize((width_size, 720), PIL.Image.NEAREST)
-    raw_landmark_button = st.button('Bring out Details')
-
+    draw_landmark_button = st.button('Bring out Details')
     if draw_landmark_button:
         result = enhance(i)
         st.header("Enhanced Image")
