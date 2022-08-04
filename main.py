@@ -1,12 +1,10 @@
-import numpy as np
 import PIL
+import numpy as np
 from PIL import Image
-
-import matplotlib.pyplot as plt
 import streamlit as st
 import tensorflow as tf
 from tensorflow import keras
-from keras import layers, losses, optimizers, callbacks
+from keras import layers
 
 
 def build_dce_net(image_size=None) -> keras.Model:
@@ -58,9 +56,11 @@ def get_model():
     return ZeroDCE()
 
 
+model = get_model()
+model.load_weights("optimumW.h5")
+
+
 def enhance(i):
-    model = get_model()
-    model.load_weights("optimumW.h5")
     image = keras.preprocessing.image.img_to_array(i)
     image = image[:, :, :3] if image.shape[-1] > 3 else image
     image = image.astype("float32") / 255.0
@@ -71,20 +71,24 @@ def enhance(i):
     return output_image
 
 
-if __name__ == '__main__':
+def st_ui():
     st.title("Image Enhancement in Low Light Conditions :flashlight:")
     user_image = st.sidebar.file_uploader("Load your own image")
     if user_image is not None:
         i = Image.open(user_image)
     else:
         i = Image.open('547.png')
-
+    w, h = i.size
+    if h > 720:
+        i = i.resize((int((float(i.size[0]) * float((720 / float(i.size[1]))))), 720), PIL.Image.NEAREST)
     st.header("Original image")
     st.image(i)
-    result = enhance(i)
-
     draw_landmark_button = st.button('Bring out Details')
-
+    result = enhance(i)
     if draw_landmark_button:
         st.header("Enhanced Image")
         st.image(result)
+
+
+if __name__ == '__main__':
+    st_ui()
