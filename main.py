@@ -10,7 +10,6 @@ from keras import layers
 def build_dce_net(image_size=None) -> keras.Model:
     '''
     .
-    .
      This function builds the DCE network since there is no currect option to save the model as a pickle.h5 format for a Keras subclass 
     model. But luckily, the weights can be loaded. Thus, we use the declared model and set the weights for our use. 
     :param int image_size: Set to none since no training is done. This function will be called in an Keras Object 
@@ -89,7 +88,7 @@ def enhance(i):
 
 def st_ui():
     '''
-    
+    .
     This Streamlit UI keeps running in an indefinite basis through __main__.It takes in the an Image or has a default demo image.
     It also has a button to bring out the details that are hid in the dark. The output image is the taken from the enhance() function
     and displayed.
