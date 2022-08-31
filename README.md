@@ -46,7 +46,7 @@ As mentioned earlier, this can be automated just by [Running the Daisi App](http
 ## References
 The paper proposed by Chongyi Li and team on [Zero-Reference Deep Curve Estimation for Low-Light Image Enhancement](https://arxiv.org/pdf/2001.06826.pdf)
 
-My notebook which attempts to implement these ideas [Sam DJ's Notebook]()
+My notebook which attempts to implement these ideas [Sam DJ's Notebook](https://colab.research.google.com/drive/1SBAbj4DFZSijdYFkHF9uIcdPtryOOeBH?usp=sharing)
 
 This model was trained using LOL dataset, i.e. LOw Light paired dataset which can be found on this [GDrive](https://drive.google.com/file/d/157bjO1_cFuSd0HWDUuAmcHRJDVyWpOxB/view)
 
