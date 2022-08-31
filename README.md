@@ -34,7 +34,7 @@ image_enhancement = pyd.Daisi("sam-dj/Image Enhancement in Low Light Conditions"
 We simply pass the image to the Daisi and finally render the result
 
 ```python
-result = image_enhancement_in_low_light_conditions.enhance(i).value
+result = image_enhancement.enhance(i).value
 result.show()
 ```
 
