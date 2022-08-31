@@ -9,12 +9,13 @@ from keras import layers
 
 def build_dce_net(image_size=None) -> keras.Model:
     '''
-    
-    
-    This function builds the DCE network since there is no currect option to save the model as a pickle, h5, YAML format for a Keras subclass 
+    .
+    .
+     This function builds the DCE network since there is no currect option to save the model as a pickle.h5 format for a Keras subclass 
     model. But luckily, the weights can be loaded. Thus, we use the declared model and set the weights for our use. 
     :param int image_size: Set to none since no training is done. This function will be called in an Keras Object 
-    :return keras.Model: A Keras model is returned with it's Conv layers performing Deep Curve Estimation, 
+    :return keras.Model: A Keras model is returned with it's Conv layers performing Deep Curve Estimation
+   
     '''
 
     input_image = keras.Input(shape=[image_size, image_size, 3])
