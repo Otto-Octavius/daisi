@@ -8,6 +8,13 @@ from keras import layers
 
 
 def build_dce_net(image_size=None) -> keras.Model:
+    '''
+    This function builds the DCE network since there is no currect option to save the model as a pickle, h5, YAML format for a Keras subclass 
+    model. But luckily, the weights can be loaded. Thus, we use the declared model and set the weights for our use. 
+    :param int image_size: Set to none since no training is done. This function will be called in an Keras Object 
+    :return keras.Model: A Keras model is returned with it's Conv layers performing Deep Curve Estimation, 
+    '''
+
     input_image = keras.Input(shape=[image_size, image_size, 3])
     conv1 = layers.Conv2D(32, (3, 3), strides=(1, 1), activation="relu", padding="same")(input_image)
     conv2 = layers.Conv2D(32, (3, 3), strides=(1, 1), activation="relu", padding="same")(conv1)
@@ -43,7 +50,6 @@ class ZeroDCE(keras.Model):
         return self.compute_losses(data, output)
 
     def load_weights(self, filepath, by_name=False, skip_mismatch=False, options=None):
-        """While loading the weights, we simply load the weights of the DCE-Net"""
         self.dce_model.load_weights(
             filepath=filepath,
             by_name=by_name,
@@ -53,6 +59,9 @@ class ZeroDCE(keras.Model):
 
 
 def get_model():
+    '''
+    This void function just returns the Subclass model with updated weights.  
+    '''
     return ZeroDCE()
 
 
@@ -61,6 +70,10 @@ model.load_weights("optimumW.h5")
 
 
 def enhance(i):
+    '''
+    This function is where the translation occurs, the enhancement function takes in the PIL image and converts it to an array.t 
+    :return output_image: Enhanced Image
+    '''
     image = keras.preprocessing.image.img_to_array(i)
     image = image[:, :, :3] if image.shape[-1] > 3 else image
     image = image.astype("float32") / 255.0
@@ -72,6 +85,11 @@ def enhance(i):
 
 
 def st_ui():
+    '''
+    TThis Streamlit UI keeps running in an indefinite basis through __main__. It takes in the an Image or has a default demo image.
+    It also has a button to bring out the details that are hid in the dark. The output image is the taken from the enhance() function
+    and displayed.
+    '''
     st.title("Image Enhancement in Low Light Conditions :flashlight:")
     user_image = st.sidebar.file_uploader("Load your own image")
     if user_image is not None:
